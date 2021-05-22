@@ -1,24 +1,64 @@
-# README
+## users テーブル
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| nickname         | string | null: false |
+| email            | string | null: false |
+| password         | string | null: false |
+| first_name       | string | null: false |
+| family_name      | string | null: false |
+| read_first_name  | string | null: false |
+| read_family_name | string | null: false |
+| birthday         | date   | null: false |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
 
-Things you may want to cover:
+- has_many :items
+- has_many :item_purchases
 
-* Ruby version
 
-* System dependencies
+## items テーブル
+| Column          | Type       | Options     |
+| --------------- | ---------- | ----------- |
+| photo           | text       | null: false |
+| name            | string     | null: false |
+| explanation     | text       | null: false |
+| category        | integer    | null: false |
+| condition       | integer    | null: false |
+| shipment_source | integer    | null: false |
+| shipment_day    | integer    | null: false |
+| charge          | integer    | null: false |
+| user            | references | null: false |
+| price           | integer    | null: false | 
 
-* Configuration
+### Association
 
-* Database creation
+- belongs_to :user
+- has_one :item_purchase
 
-* Database initialization
 
-* How to run the test suite
+## item_purchase テーブル
+| Column               | Type    | Options                        |
+| -------------------- | ------- | ------------------------------ |
+| item                 | integer | null: false, foreign_key: true |
+| user                 | integer | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+- belongs_to :user
+- belongs_to :item
+- belongs_to :purchase_information
 
-* ...
+
+## purchase_information テーブル
+| Column        | Type    | Options                        |
+| ------------- | ------- | ------------------------------ |
+| postal_code   | string  | null: false                    |
+| prefecture    | integer | null: false                    |
+| city          | string  | null: false                    |
+| address       | string  | null: false                    |
+| phone_number  | string  | null: false                    |
+| item_purchase | integer | null: false, foreign_key: true |
+
+### Association
+
+- has_one :item_purchase
