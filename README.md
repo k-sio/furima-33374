@@ -1,14 +1,14 @@
 ## users テーブル
-| Column             | Type   | Options      |
-| ---------------- --| ------ | ------------ |
-| nickname           | string | null: false  |
-| email              | string | unique: true |
-| encrypted_password | string | null: false  |
-| first_name         | string | null: false  |
-| family_name        | string | null: false  |
-| read_first_name    | string | null: false  |
-| read_family_name   | string | null: false  |
-| birthday           | date   | null: false  |
+| Column             | Type   | Options                   |
+| ---------------- --| ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| family_name        | string | null: false               |
+| read_first_name    | string | null: false               |
+| read_family_name   | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
@@ -17,17 +17,17 @@
 
 
 ## items テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| explanation        | text       | null: false                    |
-| category_id        | integer    | null: false                    |
-| condition_id       | integer    | null: false                    |
-| shipment_source_id | integer    | null: false                    |
-| shipment_day       | integer    | null: false                    |
-| charge             | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
-| price              | integer    | null: false                    | 
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| explanation   | text       | null: false                    |
+| category_id   | integer    | null: false                    |
+| condition_id  | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| shipment_day  | integer    | null: false                    |
+| charge_id     | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| price         | integer    | null: false                    | 
 
 ### Association
 
